@@ -1,0 +1,33 @@
+log in page with embedded floating window, with two possible backgrounds, one with map/pins etc for user log in and one with gears and stuff dor admins
+
+
+main page, split in 2, biggest part for map view/navigation and rest for action buttons (tracker selection-show complete history-show history/route from time x to y-show last location-POI search-POI save-POI show-POI delete). background needed only for action button part-vertical orthogon
+---possibility that buttons are retractable, so no background will be needed at all
+---mentioned buttons would have their own specific images instead
+
+
+profile view page
+
+
+alter profile page
+
+
+change password page
+
+
+support contact page
+(mazi??)
+information page
+
+
+
+
+admin pages for: 
+
+assigning trackers to users
+
+adding new trackers
+
+adding new users
+
+changing selected user data/situation
