@@ -1,0 +1,245 @@
+<!DOCTYPE html >
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>GEO Tracking on HTML5, PHP and Google Maps</title>
+	<link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+	<body>
+  
+  
+		<div id="map"></div>
+		
+		
+		
+		<!-- Sidebar -->
+		<div id="sidebar">
+
+			<!-- Logo -->
+			<h1 id="logo"><a href="#">GEO Tracking</a></h1>
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul>
+					<li class="current"><a href="#">Latest Post</a></li>
+					<li><a href="#">Archives</a></li>
+					<li><a href="#">About Me</a></li>
+					<li><a href="#">Contact Me</a></li>
+				</ul>
+			</nav>
+
+			<!-- Search -->
+			<section class="box search">
+				<form method="post" action="#">
+					<input type="text" class="text" name="search" placeholder="Search" />
+				</form>
+			</section>
+
+			<!-- Text -->
+			<section class="box text-style1">
+				<div class="inner">
+					<p>
+						<strong>Welcome to GEO Tracking:</strong> A platform for tracking where your vehicle was, or is at.
+					</p>
+				</div>
+			</section>
+
+			<!-- Recent Posts -->
+			<section class="box recent-posts">
+				<header>
+					<h2>Recent Posts</h2>
+				</header>
+				<ul>
+					<li><a href="#">Lorem ipsum dolor</a></li>
+					<li><a href="#">Feugiat nisl aliquam</a></li>
+					<li><a href="#">Sed dolore magna</a></li>
+					<li><a href="#">Malesuada commodo</a></li>
+					<li><a href="#">Ipsum metus nullam</a></li>
+				</ul>
+			</section>
+
+			<!-- Recent Comments -->
+			<section class="box recent-comments">
+				<header>
+					<h2>Recent Comments</h2>
+				</header>
+				<ul>
+					<li>case on <a href="#">Lorem ipsum dolor</a></li>
+					<li>molly on <a href="#">Sed dolore magna</a></li>
+					<li>case on <a href="#">Sed dolore magna</a></li>
+				</ul>
+			</section>
+
+			<!-- Calendar -->
+			<section class="box calendar">
+				<div class="inner">
+					<table>
+						<caption>July 2014</caption>
+						<thead>
+							<tr>
+								<th scope="col" title="Monday">M</th>
+								<th scope="col" title="Tuesday">T</th>
+								<th scope="col" title="Wednesday">W</th>
+								<th scope="col" title="Thursday">T</th>
+								<th scope="col" title="Friday">F</th>
+								<th scope="col" title="Saturday">S</th>
+								<th scope="col" title="Sunday">S</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="4" class="pad"><span>&nbsp;</span></td>
+								<td><span>1</span></td>
+								<td><span>2</span></td>
+								<td><span>3</span></td>
+							</tr>
+							<tr>
+								<td><span>4</span></td>
+								<td><span>5</span></td>
+								<td><a href="#">6</a></td>
+								<td><span>7</span></td>
+								<td><span>8</span></td>
+								<td><span>9</span></td>
+								<td><a href="#">10</a></td>
+							</tr>
+							<tr>
+								<td><span>11</span></td>
+								<td><span>12</span></td>
+								<td><span>13</span></td>
+								<td class="today"><a href="#">14</a></td>
+								<td><span>15</span></td>
+								<td><span>16</span></td>
+								<td><span>17</span></td>
+							</tr>
+							<tr>
+								<td><span>18</span></td>
+								<td><span>19</span></td>
+								<td><span>20</span></td>
+								<td><span>21</span></td>
+								<td><span>22</span></td>
+								<td><a href="#">23</a></td>
+								<td><span>24</span></td>
+							</tr>
+							<tr>
+								<td><a href="#">25</a></td>
+								<td><span>26</span></td>
+								<td><span>27</span></td>
+								<td><span>28</span></td>
+								<td class="pad" colspan="3"><span>&nbsp;</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<!-- Copyright -->
+			<ul id="copyright">
+					<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+
+		</div>
+		
+		
+		
+		
+		
+		
+			
+		
+		
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="assets/js/main.js"></script>
+		<script>
+			var customLabel = {
+				restaurant: {
+					label: 'R'
+				},
+				bar: {
+					label: 'B'
+				}
+			};
+
+			function initMap() {
+				var map = new google.maps.Map(document.getElementById('map'), {
+					center: new google.maps.LatLng(-33.863276, 151.207977),
+					zoom: 12
+				});
+				var infoWindow = new google.maps.InfoWindow;
+
+				// Change this depending on the name of your PHP or XML file
+				downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function(data) {
+					var xml = data.responseXML;
+					var markers = xml.documentElement.getElementsByTagName('marker');
+					Array.prototype.forEach.call(markers, function(markerElem) {
+						var name = markerElem.getAttribute('name');
+						var address = markerElem.getAttribute('address');
+						var type = markerElem.getAttribute('type');
+						var point = new google.maps.LatLng(
+						parseFloat(markerElem.getAttribute('lat')),
+						parseFloat(markerElem.getAttribute('lng')));
+
+						var infowincontent = document.createElement('div');
+						var strong = document.createElement('strong');
+						strong.textContent = name
+						infowincontent.appendChild(strong);
+						infowincontent.appendChild(document.createElement('br'));
+	
+						var text = document.createElement('text');
+						text.textContent = address
+						infowincontent.appendChild(text);
+						var icon = customLabel[type] || {};
+						var marker = new google.maps.Marker({
+							map: map,
+							position: point,
+						label: icon.label
+						});
+						marker.addListener('click', function() {
+							infoWindow.setContent(infowincontent);
+							infoWindow.open(map, marker);
+						});
+					});
+				});
+			}
+
+			function downloadUrl(url, callback) {
+				var request = window.ActiveXObject ?
+				new ActiveXObject('Microsoft.XMLHTTP') :
+				new XMLHttpRequest;
+
+				request.onreadystatechange = function() {
+					if (request.readyState == 4) {
+						request.onreadystatechange = doNothing;
+						callback(request, request.status);
+					}
+				};
+				request.open('GET', url, true);
+				request.send(null);
+			}
+		
+			function doNothing() {}
+		</script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHDcpQOKwPI_-DSmat_pI03h4186-0-2A&callback=initMap">
+		</script>
+		
+	</body>
+</html>

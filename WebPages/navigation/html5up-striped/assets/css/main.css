@@ -2220,12 +2220,16 @@
 		color: #aaa;
 		color: rgba(255, 255, 255, 0.55);
 		text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.5);
-		width: 14em;
+		width: 5em;
 		padding: 3em 1.35em 1em 1.15em;
 		background: #364050 url("images/bg01.png");
 		overflow-y: auto;
-		left: 0;
+		float: left;
 		box-shadow: inset -0.1em 0em 0.35em 0em rgba(0, 0, 0, 0.15);
+	}
+	
+	#sidebar.maximized {
+		width: 15em;
 	}
 
 		#sidebar form input, #sidebar form select, #sidebar form textarea {
@@ -2265,6 +2269,99 @@
 		#sidebar header {
 			margin: 0 0 1.25em 0;
 		}
+		
+		.sidebar li {
+			border-left: 4px solid transparent;
+			cursor: pointer;
+			border-top: 1px solid #fcfcfc;
+			border-bottom: 1px solid #e5e5e5;
+		}
+		.sidebar li: hover {
+			border-left: 4px solid #666;
+		}
+		.sidebar li.active {
+			border-left: 4px solid #2b7dbc;
+		}
+		.sidebar a {
+			display: block;
+			padding: 0 16px 0 7px;
+			background-color: #f9f9f9;
+			color: #585858;
+			text-shadow: none!important;
+			font-size: 15px;
+			text-decoration: none;
+		}
+		.sidebar li: hover a, .sidebar li.active a {
+			background: #fff;
+			color: #2b7dbc;
+		}
+		.sidebar a i {
+			font-size: 18px;
+			top: 3px;
+			min-width: 30px;
+		}
+		
+		.sidebar .menu-text {
+		    display: none;
+		}
+		.sidebar.maximized .menu-text {
+		    display: inline-block;
+		}
+
+		.sidebar .icon-double-angle-left,
+		.sidebar .icon-double-angle-right{
+		    display: inline-block;
+		    cursor: pointer;
+		    font-size: 14px;
+		    color: #aaa;
+		    border: 1px solid #bbb;
+		    padding: 0 5px;
+		    margin : 0;
+		    line-height: 18px;
+		    border-radius: 16px;
+		    background-color: #fff;
+		    position: relative;
+		    position:absolute;
+		    top : 50%;
+		    left : 180px;
+		}
+
+		.sidebar .icon-double-angle-right {
+		    left : 40px;
+		}
+
+		.icon-double-angle-left:before {
+		    content: "\f100";
+		}
+
+		.icon-double-angle-right:before {
+		    content: "\f101";
+		}
+		
+		
+		
+		/*testing style for floating sidebar*/
+		/*.sidebar {
+			float: left;
+			width: 50px;
+			background-color: #f2f2f2;
+		}
+		.sidebar.maximized {
+		  width: 190px;
+		}
+		.body {
+		  margin-left: 190px;
+		  min-height: 100%;
+		}
+		.body.minimized {
+		  margin-left: 50px;
+		}
+		*/
+		
+		
+		
+		
+		
 
 /* Content */
 

@@ -1,86 +1,67 @@
-<!DOCTYPE HTML>
-
+<!DOCTYPE html >
 <html>
-	<head>
-		<title>GEO Tracking on HTML5 UP</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		
-		<style>
-			/* Always set the map height explicitly to define the size of the div
-			* element that contains the map. */
-			#map 
-			{
-				height: 100%;
-			}
-			/* Optional: Makes the sample page fill the window. */
-			html, body 
-			{
-				height: 100%;
-				margin: 0;
-				padding: 0;
-			}
-		</style>
-	</head>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>GEO Tracking on HTML5, PHP and Google Maps</title>
+	<link rel="stylesheet" href="assets/css/main.css" />
 	
+	
+	<script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <link data-require="bootstrap-css@*" data-semver="3.0.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+    <link data-require="bootstrap@*" data-semver="3.0.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+    <link data-require="font-awesome@*" data-semver="4.0.3" rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <script data-require="bootstrap@*" data-semver="3.0.2" src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+	
+	
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
 	<body>
-
-		<!-- Content -->
-			<div id="content">
-				<div class="inner">
-
-					<!-- Post -->
-						<article class="box post post-excerpt" style="width: 100%; height: 100%">
-								<!--
-									Note: Titles and subtitles will wrap automatically when necessary, so don't worry
-									if they get too long. You can also remove the <p> entirely if you don't
-									need a subtitle.
-								-->
-							<div class="info">
-								<!--
-									Note: The date should be formatted exactly as it's shown below. In particular, the
-									"least significant" characters of the month should be encapsulated in a <span>
-									element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
-									Oh, and if you don't need a date for a particular page or post you can simply delete
-									the entire "date" element.
-								-->
-								<span class="date"><span class="month">Jul<span>y</span></span> 
-								<span class="day">14</span><span class="year">, 2014</span></span>
-								<!--
-									Note: You can change the number of list items in "stats" to whatever you want.
-								-->
-								<ul class="stats">
-									<!-- edw prepei na mpei endiksi twn nodes pou exoun epistrafei apo to query, kai antisoixi eikonitsa-->
-									<li><a href="#" class="icon fa-comment">16</a></li>
-									<li><a>Nodes</a></li>
-								</ul>
-							</div>
-							<!--<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>-->
-	
-							<!--<iframe src="assets\new 1.html" style="width: 100%; height: 100%" scrolling="no"></iframe>-->
-							
-							<div id="map"></div>
-							<!--<iframe src="index.html/map/js" style="width: 100%; height: 100%" scrolling="no"></iframe>-->
-				
-							
-							
-							
-							
-							
-						</article>						
-				</div>			
-			</div>
-
+  
+  
+		<div id="map"></div>
+		
+		
 		<!-- Sidebar -->
+		<!-- <div class="sidebar maximized">
+		  <ul class="list-unstyled nav nav-list">
+			<li>
+			  <a>
+				<i class="glyphicon glyphicon-calendar"></i>
+				<span class="menu-text">Calendar</span>
+			  </a>
+			</li>
+			<li>
+			  <a>
+				<i class="glyphicon glyphicon-tags"></i>
+				<span class="menu-text">Tags</span>
+			  </a>
+			</li>
+		  </ul>
+		  <a href="javascript:onClick();" class="angle icon-double-angle-left"></a>
+		</div> -->
+		
+		
+		<div class="sidebar maximized">
 			<div id="sidebar">
-
-				<!-- Logo -->
+				<ul class="list-unstyled nav nav-list">
+					<!-- Logo -->
 					<h1 id="logo"><a href="#">GEO Tracking</a></h1>
 
-				<!-- Nav -->
+					<!-- Nav -->
 					<nav id="nav">
 						<ul>
 							<li class="current"><a href="#">Latest Post</a></li>
@@ -90,14 +71,14 @@
 						</ul>
 					</nav>
 
-				<!-- Search -->
+					<!-- Search -->
 					<section class="box search">
 						<form method="post" action="#">
 							<input type="text" class="text" name="search" placeholder="Search" />
 						</form>
 					</section>
 
-				<!-- Text -->
+					<!-- Text -->
 					<section class="box text-style1">
 						<div class="inner">
 							<p>
@@ -106,7 +87,7 @@
 						</div>
 					</section>
 
-				<!-- Recent Posts -->
+					<!-- Recent Posts -->
 					<section class="box recent-posts">
 						<header>
 							<h2>Recent Posts</h2>
@@ -120,7 +101,7 @@
 						</ul>
 					</section>
 
-				<!-- Recent Comments -->
+					<!-- Recent Comments -->
 					<section class="box recent-comments">
 						<header>
 							<h2>Recent Comments</h2>
@@ -132,7 +113,7 @@
 						</ul>
 					</section>
 
-				<!-- Calendar -->
+					<!-- Calendar -->
 					<section class="box calendar">
 						<div class="inner">
 							<table>
@@ -194,98 +175,118 @@
 						</div>
 					</section>
 
-				<!-- Copyright -->
+					<!-- Copyright -->
 					<ul id="copyright">
-						<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
-
+				</ul>
 			</div>
-
+			<a href="javascript:onClick();" class="angle icon-double-angle-left"></a>
+		</div>
+		
+		
+		
+		
+		
+			
+		
+		
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-			<script>
-				var customLabel = 
-				{
-					restaurant: 
-					{
-						label: 'R'
-					},
-					bar: 
-					{
-						label: 'B'
-					}
-				};
-				function initMap() 
-				{
-					var map = new google.maps.Map(document.getElementById('map'), 
-					{
-						center: new google.maps.LatLng(-33.863276, 151.207977),
-						zoom: 12
-					});
-					var infoWindow = new google.maps.InfoWindow;
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="assets/js/main.js"></script>
+		<script>
+			var customLabel = {
+				restaurant: {
+					label: 'R'
+				},
+				bar: {
+					label: 'B'
+				}
+			};
 
-					// Change this depending on the name of your PHP or XML file
-					downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function(data) 
-					{
-						var xml = data.responseXML;
-						var markers = xml.documentElement.getElementsByTagName('marker');
-						Array.prototype.forEach.call(markers, function(markerElem) 
-						{
-							var name = markerElem.getAttribute('name');
-							var address = markerElem.getAttribute('address');
-							var type = markerElem.getAttribute('type');
-							var point = new google.maps.LatLng(
-								parseFloat(markerElem.getAttribute('lat')),
-								parseFloat(markerElem.getAttribute('lng')));
-							var infowincontent = document.createElement('div');
-							var strong = document.createElement('strong');
-							strong.textContent = name
-							infowincontent.appendChild(strong);
-							infowincontent.appendChild(document.createElement('br'));
-							var text = document.createElement('text');
-							text.textContent = address
-							infowincontent.appendChild(text);
-							var icon = customLabel[type] || {};
-							var marker = new google.maps.Marker(
-							{
-								map: map,
-								position: point,
-								label: icon.label
-							});
-							marker.addListener('click', function() 
-							{
-								infoWindow.setContent(infowincontent);
-								infoWindow.open(map, marker);
-							});
+			function initMap() {
+				var map = new google.maps.Map(document.getElementById('map'), {
+					center: new google.maps.LatLng(-33.863276, 151.207977),
+					zoom: 12
+				});
+				var infoWindow = new google.maps.InfoWindow;
+
+				// Change this depending on the name of your PHP or XML file
+				downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function(data) {
+					var xml = data.responseXML;
+					var markers = xml.documentElement.getElementsByTagName('marker');
+					Array.prototype.forEach.call(markers, function(markerElem) {
+						var name = markerElem.getAttribute('name');
+						var address = markerElem.getAttribute('address');
+						var type = markerElem.getAttribute('type');
+						var point = new google.maps.LatLng(
+						parseFloat(markerElem.getAttribute('lat')),
+						parseFloat(markerElem.getAttribute('lng')));
+
+						var infowincontent = document.createElement('div');
+						var strong = document.createElement('strong');
+						strong.textContent = name
+						infowincontent.appendChild(strong);
+						infowincontent.appendChild(document.createElement('br'));
+	
+						var text = document.createElement('text');
+						text.textContent = address
+						infowincontent.appendChild(text);
+						var icon = customLabel[type] || {};
+						var marker = new google.maps.Marker({
+							map: map,
+							position: point,
+						label: icon.label
+						});
+						marker.addListener('click', function() {
+							infoWindow.setContent(infowincontent);
+							infoWindow.open(map, marker);
 						});
 					});
-				}
+				});
+			}
 
-				function downloadUrl(url, callback) 
-				{
-					var request = window.ActiveXObject ?
-					new ActiveXObject('Microsoft.XMLHTTP') :
-					new XMLHttpRequest;
+			function downloadUrl(url, callback) {
+				var request = window.ActiveXObject ?
+				new ActiveXObject('Microsoft.XMLHTTP') :
+				new XMLHttpRequest;
 
-					request.onreadystatechange = function() 
-					{
-						if (request.readyState == 4) 
-						{
-							request.onreadystatechange = doNothing;
-							callback(request, request.status);
-						}
-					};
-					request.open('GET', url, true);
-					request.send(null);
+				request.onreadystatechange = function() {
+					if (request.readyState == 4) {
+						request.onreadystatechange = doNothing;
+						callback(request, request.status);
+					}
+				};
+				request.open('GET', url, true);
+				request.send(null);
+			}
+		
+			function doNothing() {}
+		</script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHDcpQOKwPI_-DSmat_pI03h4186-0-2A&callback=initMap">
+		</script>
+		<script>
+			function onClick () {
+				var sidebar = document.querySelector('.sidebar');
+				var body = document.querySelector('.body');
+				var angle = document.querySelector('.angle');
+				var classNames = document.querySelector('.sidebar').className;
+				if(classNames.indexOf('maximized') > -1) {
+					sidebar.className = 'sidebar';
+					body.className = 'body minimized';
+					angle.className = 'angle icon-double-angle-right';
+				} else {
+					sidebar.className = 'sidebar maximized';
+					body.className = 'body';
+					angle.className = 'angle icon-double-angle-left';
 				}
-				function doNothing() {}
-			</script>
-			<script async defer
-				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHDcpQOKwPI_-DSmat_pI03h4186-0-2A&callback=initMap">
-			</script>
+				return false;
+			};	
+		</script>
+		
 	</body>
 </html>
