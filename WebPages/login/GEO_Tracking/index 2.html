@@ -14,7 +14,6 @@
   <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
   <link href="css/login.css" rel="stylesheet">
-
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -39,6 +38,8 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+  
+  <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
 </head><!--/head-->
 
 <body>
@@ -576,7 +577,7 @@
               <ul>
                 <li>Free Installation</li>
 				<li>With Power Adapter</li>
-                <li>Temperatureproof</li>
+                <li>High Temperature Resistant</li>
                 <li>Waterproof</li>
                 <li>Full Metal Housing</li>
               </ul>
@@ -613,7 +614,7 @@
 		<div class="container">
 			<div class="aa">
 				<h2>Sign In</h2>
-				<form>
+				<form class="form-signin" method="POST" action="php/login.php">
 					<div class="onoffswitch">
 						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
 						<label class="onoffswitch-label" for="myonoffswitch">
@@ -622,9 +623,13 @@
 						</label>
 					</div>
 					<br>
-					<input type="text" placeholder="Please Enter Username...."><br><br>
-					<input type="password" placeholder="Please Enter Password..."><br><br>
-					<input type="submit" value=Login>
+					<input type="text" name="user" class="form-control" placeholder="Username....">
+					<br>
+					<input type="password" name="pass" id="inputPassword" class="form-control" placeholder="Password..." required>
+					<br>
+					<input id="button" type="submit" name="submit" value=Login>
+					<!--class="btn btn-lg btn-primary btn-block"-->
+					<!--<div class="g-recaptcha" data-sitekey="6Le-cBoUAAAAACB_XNV3aySTA-RICEoY4eFaghPb"></div>-->
 				</form>
 			</div>
 		</section>
@@ -720,7 +725,9 @@
 
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHDcpQOKwPI_-DSmat_pI03h4186-0-2A&callback=initMap"></script>
+	
   <script type="text/javascript" src="js/jquery.inview.min.js"></script>
   <script type="text/javascript" src="js/wow.min.js"></script>
   <script type="text/javascript" src="js/mousescroll.js"></script>
