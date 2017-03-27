@@ -1,0 +1,121 @@
+/*body{
+	background-image: url(../images/attika1.JPG);
+	background-size: cover;
+}*/
+.aa{
+	width: 350px;
+	height: 320px;
+	background-color: rgba(0,0,0,0.4);
+	margin: 0 auto;
+	margin-top: 40px;
+	padding-top: 10px;
+	padding-left: 20px;
+	border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-o-border-radius: 15px;
+	-moz-border-radius: 15px;
+	color: white;
+	font-weight: bolder;
+	box-shadow: inset -4px -4px rgba(0,0,0,0.5);
+	font-size: 18px;
+}
+.aa input[type="text"]{
+	width: 230px;
+	height: 35px;
+	border: 0;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	color: black;
+	padding-left: 5px;
+}
+.aa input[type="password"]{
+	width: 230px;
+	height: 35px;
+	padding-left: 5px;
+	border: 0;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	color: black;
+}
+.aa input[type="submit"]{
+	width: 100px;
+	height: 35px;
+	border: 0;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background-color: skyblue;
+	font-weight: bolder;
+}
+.onoffswitch {
+    position: relative; 
+	width: 124px;
+    -webkit-user-select:none; 
+	-moz-user-select:none; 
+	-ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; 
+	overflow: hidden; 
+	cursor: pointer;
+    border: 2px solid #ADA3A3; 
+	border-radius: 20px;
+}
+.onoffswitch-inner {
+    display: block; 
+	width: 200%; 
+	margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; 
+	float: left; 
+	width: 50%; 
+	height: 30px; 
+	padding: 0; 
+	line-height: 30px;
+    font-size: 16px; 
+	color: white; 
+	font-family: Trebuchet, Arial, sans-serif; 
+	font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "User";
+    padding-left: 5px;
+    background-color: #34A7C1; 
+	color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "Admin";
+    padding-right: 31px;
+    background-color: #A3DAFA; 
+	color: #000000;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 32px; 
+	margin: 1px;
+    background: #C0C0C0;
+    position: absolute; 
+	top: 0; 
+	bottom: 0;
+    right: 90px;
+    border: 2px solid #ADA3A3; 
+	border-radius: 20px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
