@@ -31,6 +31,10 @@ CREATE TABLE `tbl_assignedtrackers` (
   CONSTRAINT `fk_TBL_AssignedTrackers_TBL_Users2` FOREIGN KEY (`UserTaxNumber_ID`) REFERENCES `tbl_users` (`UserTaxNumber_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+/*Data for the table `tbl_assignedtrackers` */
+
+insert  into `tbl_assignedtrackers`(`TrackerIMEI_ID`,`UserTaxNumber_ID`,`Nickname`,`LinkDate`) values (358456985123694,146995081,'DemoTracker','2017-03-06 04:17:06.564212');
+
 /*Table structure for table `tbl_cities` */
 
 DROP TABLE IF EXISTS `tbl_cities`;
@@ -43,6 +47,10 @@ CREATE TABLE `tbl_cities` (
   UNIQUE KEY `City_UNIQUE` (`City`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
+/*Data for the table `tbl_cities` */
+
+insert  into `tbl_cities`(`City_ID`,`City`) values (1,'Athens'),(7,'Avlona'),(6,'Kalamata'),(4,'Korinthos'),(3,'Patra'),(5,'Porto Heli'),(2,'Thesalloniki');
+
 /*Table structure for table `tbl_gender` */
 
 DROP TABLE IF EXISTS `tbl_gender`;
@@ -54,6 +62,10 @@ CREATE TABLE `tbl_gender` (
   UNIQUE KEY `Gender_UNIQUE` (`Gender`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
+/*Data for the table `tbl_gender` */
+
+insert  into `tbl_gender`(`Gender_ID`,`Gender`) values (2,'Female'),(1,'Male'),(3,'Unknown');
+
 /*Table structure for table `tbl_locations` */
 
 DROP TABLE IF EXISTS `tbl_locations`;
@@ -61,8 +73,8 @@ DROP TABLE IF EXISTS `tbl_locations`;
 CREATE TABLE `tbl_locations` (
   `Location_ID` int(11) NOT NULL AUTO_INCREMENT,
   `TrackerIMEI_ID` double NOT NULL,
-  `Longitude` double NOT NULL,
-  `Latitude` double NOT NULL,
+  `Longitude` double NOT NULL DEFAULT '0',
+  `Latitude` double NOT NULL DEFAULT '0',
   `Speed` varchar(30) DEFAULT '-1',
   `Altitude` double DEFAULT '-1',
   `Battery` varchar(20) DEFAULT '0',
@@ -72,6 +84,10 @@ CREATE TABLE `tbl_locations` (
   KEY `fk_TBL_Locations_TBL_Trackers1_idx` (`TrackerIMEI_ID`),
   CONSTRAINT `fk_TBL_Locations_TBL_Trackers2` FOREIGN KEY (`TrackerIMEI_ID`) REFERENCES `tbl_trackers` (`TrackerIMEI_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tbl_locations` */
+
+insert  into `tbl_locations`(`Location_ID`,`TrackerIMEI_ID`,`Longitude`,`Latitude`,`Speed`,`Altitude`,`Battery`,`EventTime`) values (8,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(9,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(10,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(11,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(12,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(13,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(14,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(15,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(16,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(17,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(18,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(19,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(20,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(21,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(22,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(23,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(24,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(25,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2019-03-06 03:24:50');
 
 /*Table structure for table `tbl_logs` */
 
@@ -88,6 +104,8 @@ CREATE TABLE `tbl_logs` (
   CONSTRAINT `fk_TBL_Logs_TBL_Users1` FOREIGN KEY (`UserTaxNumber_ID`) REFERENCES `tbl_users` (`UserTaxNumber_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+/*Data for the table `tbl_logs` */
+
 /*Table structure for table `tbl_msisdn` */
 
 DROP TABLE IF EXISTS `tbl_msisdn`;
@@ -102,6 +120,10 @@ CREATE TABLE `tbl_msisdn` (
   PRIMARY KEY (`MSISDN_ID`),
   UNIQUE KEY `MSISDN_ID_UNIQUE` (`MSISDN_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tbl_msisdn` */
+
+insert  into `tbl_msisdn`(`MSISDN_ID`,`PIN1`,`PIN2`,`PUK1`,`PUK2`,`AdditionDate`) values (6934575852,4444,4444,4444,4444,'2017-03-09 14:46:03'),(6942033581,5555,5555,5555,5555,'2017-03-06 02:49:08'),(6980118854,9999,9999,9999,9999,'2017-03-24 23:37:25'),(6999999999,9999,9999,9999,9999,'2017-03-14 19:26:52');
 
 /*Table structure for table `tbl_poi_locations` */
 
@@ -119,6 +141,8 @@ CREATE TABLE `tbl_poi_locations` (
   CONSTRAINT `fk_TBL_POI_Locations_TBL_Users1` FOREIGN KEY (`UserTaxNumber_ID`) REFERENCES `tbl_users` (`UserTaxNumber_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+/*Data for the table `tbl_poi_locations` */
+
 /*Table structure for table `tbl_streets` */
 
 DROP TABLE IF EXISTS `tbl_streets`;
@@ -131,6 +155,10 @@ CREATE TABLE `tbl_streets` (
   UNIQUE KEY `StreetName_UNIQUE` (`StreetName`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
+/*Data for the table `tbl_streets` */
+
+insert  into `tbl_streets`(`Streets_ID`,`StreetName`) values (2,'Akriton'),(4,'Eleftheriou Venizelou'),(1,'Ermou'),(3,'Thiseos');
+
 /*Table structure for table `tbl_trackermodels` */
 
 DROP TABLE IF EXISTS `tbl_trackermodels`;
@@ -141,7 +169,11 @@ CREATE TABLE `tbl_trackermodels` (
   PRIMARY KEY (`TrackerModel_ID`),
   UNIQUE KEY `TrackerModel_ID_UNIQUE` (`TrackerModel_ID`),
   UNIQUE KEY `ModelName_UNIQUE` (`ModelName`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tbl_trackermodels` */
+
+insert  into `tbl_trackermodels`(`TrackerModel_ID`,`ModelName`) values (4,'TK-101'),(3,'TK-102'),(7,'TK-102B'),(1,'TK-102B-C1'),(5,'TK-103'),(6,'TK-103B'),(10,'TK-104'),(11,'TK-106'),(18,'TK-110'),(12,'TK-201'),(13,'TK-201B'),(14,'TK-202'),(15,'TK-203'),(16,'TK-206'),(8,'XT-009'),(9,'XT-011'),(17,'XT-107');
 
 /*Table structure for table `tbl_trackers` */
 
@@ -164,6 +196,10 @@ CREATE TABLE `tbl_trackers` (
   CONSTRAINT `FK_tbl_trackers2` FOREIGN KEY (`TrackerModel_ID`) REFERENCES `tbl_trackermodels` (`TrackerModel_ID`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+/*Data for the table `tbl_trackers` */
+
+insert  into `tbl_trackers`(`TrackerIMEI_ID`,`MSISDN_ID`,`TrackerModel_ID`,`SerialNumber`,`AddDate`,`Status`,`LastUpdate`,`Condition`) values (352887073813341,6980118854,1,'087073813341','2017-03-24 23:42:05.050122',0,'1900-01-01 00:00:01',1),(358456985123694,6942033581,1,'555555','2017-03-06 03:36:41.000000',0,'2017-03-08 01:50:00',1),(385469845615875,6934575852,3,'444444','2017-03-08 00:00:01.000000',0,'1900-01-01 00:00:01',1);
+
 /*Table structure for table `tbl_useraddress` */
 
 DROP TABLE IF EXISTS `tbl_useraddress`;
@@ -181,6 +217,10 @@ CREATE TABLE `tbl_useraddress` (
   CONSTRAINT `fk_TBL_UserAddress_TBL_Streets1` FOREIGN KEY (`Street_ID`) REFERENCES `tbl_streets` (`Streets_ID`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `fk_TBL_UserAddress_TBL_Users1` FOREIGN KEY (`UserTaxNumber_ID`) REFERENCES `tbl_users` (`UserTaxNumber_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tbl_useraddress` */
+
+insert  into `tbl_useraddress`(`UserTaxNumber_ID`,`City_ID`,`Street_ID`,`StreetNumber`,`PostalCode`) values (146995081,1,2,'10','17564');
 
 /*Table structure for table `tbl_userdetails` */
 
@@ -203,6 +243,10 @@ CREATE TABLE `tbl_userdetails` (
   CONSTRAINT `FK_tbl_userdetails2` FOREIGN KEY (`UserTaxNumber_ID`) REFERENCES `tbl_users` (`UserTaxNumber_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+/*Data for the table `tbl_userdetails` */
+
+insert  into `tbl_userdetails`(`UserTaxNumber_ID`,`Gender_ID`,`Name`,`Surname`,`FatherName`,`Email`,`IDnumber`,`TelephoneA`,`TelephoneB`) values (146995081,1,'George','Papakonstantinou','Fragkiskos','gew.papakonstantinou@gmail.com','276308025',6942033581,NULL),(155685972,2,'testina','testinaaa','testos','testina@testole.com','ab259545',6933335554,NULL);
+
 /*Table structure for table `tbl_users` */
 
 DROP TABLE IF EXISTS `tbl_users`;
@@ -218,6 +262,10 @@ CREATE TABLE `tbl_users` (
   UNIQUE KEY `UserTaxNumber_ID_UNIQUE` (`UserTaxNumber_ID`),
   UNIQUE KEY `Username_UNIQUE` (`Username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `tbl_users` */
+
+insert  into `tbl_users`(`UserTaxNumber_ID`,`Username`,`Password`,`Privilege`,`Status`,`CreateTime`) values (146995081,'gpapakonstantinou','1111',0,1,'2017-03-07 18:36:14.026933'),(155685972,'testtesttest','1111',1,1,'2017-03-09 14:43:35.354719');
 
 /* Trigger structure for table `tbl_locations` */
 
