@@ -1,9 +1,9 @@
 <?php
 	$servername = "localhost";
-	$username = "root";
+	$userconname = "root";
 	$password = "secret";
 	$dbname = "geo_tracking";
-	$connection = mysqli_connect($servername, $username, $password);
+	$connection = mysqli_connect($servername, $userconname, $password);
 	if (!$connection){
 		die("Database Connection Failed" . mysqli_error($connection));
 	}
