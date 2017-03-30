@@ -1,3 +1,10 @@
+<?php 
+	session_start();
+	$userx = $_SESSION['user'];
+	$userIDx = $_SESSION['userID'];
+	echo $_SESSION['user'];
+	echo $_SESSION['userID'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -7,7 +14,7 @@
 		<meta http-equiv="content-type" content="IE=edge">
 		<meta name="description" content="text/html; charset=UTF-8">
 		<meta name="keywords" content="global, template, html, sass, jquery">
-		<meta name="author" content="George Papakonstantinou">
+		<meta name="author" content="Gewpap">
 		<link rel="stylesheet" href="assets/css/main.css">
 		<style>
 			/* Always set the map height explicitly to define the size of the div
@@ -25,9 +32,8 @@
 	</head>
 
 	<body>
-		<?php include '\assets\php\session.php';?>
 		
-		
+
 		
 		
 		
@@ -69,8 +75,8 @@
 								<div class="trackers">
 									<h2>Select trackers to show</h2>
 									<div class="trackers--lockup">
-										<h3>"user is $userx"</h3>
-										<h3>"and his ID is $userIDx"</h3>
+										<!--<h3>"user is $userx"</h3>
+										<h3>"and his ID is $userIDx"</h3>-->
 			
 									</div>
 								</div>

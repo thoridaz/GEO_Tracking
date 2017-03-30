@@ -67,7 +67,7 @@
 				$_SESSION['userID'] = $row["UserTaxnumber_ID"];	
 				//Checking logged in account privilege before redirecting to corresponding page
 				if ($row["Privilege"] == 1){
-					header("Location: ..\..\Navigation\index.html");
+					header("Location: ..\..\Navigation\index.php");
 				}elseif ($row["Privilege"] == 0){
 					//EDW PREPEI NA MPEI H ADMIN PAGE
 					header("Location: ADMIN PAGE");
