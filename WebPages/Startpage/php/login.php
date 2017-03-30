@@ -1,6 +1,5 @@
 <?php  
-	//Start the Session
-	session_start();
+	if(!isset($_SESSION)){ session_start(); }	//Start the Session
 	require('connect.php');
 	
 	//It will never let you open index(login) page if session is set
@@ -68,7 +67,7 @@
 				$_SESSION['userID'] = $row["UserTaxnumber_ID"];	
 				//Checking logged in account privilege before redirecting to corresponding page
 				if ($row["Privilege"] == 1){
-					header("Location: ..\..\global-master\index.html");
+					header("Location: ..\..\Navigation\index.html");
 				}elseif ($row["Privilege"] == 0){
 					//EDW PREPEI NA MPEI H ADMIN PAGE
 					header("Location: ADMIN PAGE");
