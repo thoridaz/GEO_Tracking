@@ -65,6 +65,7 @@
 			//If the posted password is equal to the database password, then session will be created for the user.
 			if ($count == 1 && $row["Password"]==$passkey){
 				$_SESSION['user'] = $Usertag;
+				$_SESSION['userID'] = $row["UserTaxnumber_ID"];	
 				//Checking logged in account privilege before redirecting to corresponding page
 				if ($row["Privilege"] == 1){
 					header("Location: ..\..\global-master\index.html");
