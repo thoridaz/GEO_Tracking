@@ -1,10 +1,12 @@
 <?php 
-	session_start();
-	$userx = $_SESSION['user'];
-	$userIDx = $_SESSION['userID'];
-	echo $_SESSION['user'];
-	echo $_SESSION['userID'];
+	if(!isset($_SESSION)){ 
+		session_start();	//Start the Session 
+	} 
+	require('assets/php/session.php');
+	require('assets/php/accdetails.php');
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -54,8 +56,9 @@
 						<header class="header">
 							<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 							<a class="header--logo" href="#0">
+								<a href="assets/php/logout.php" title="Disconnect">Sign Out</a>
+								<p></p><p></p>
 								<img src="assets/img/logo.png" alt="5G">
-								<p>5G Co</p>
 							</a>
 							<button class="header--cta cta">Contact Us</button>
 							<div class="header--nav-toggle">
@@ -65,40 +68,100 @@
 				
 						<ul class="l-main-content main-content">
 							<li class="l-section section section--is-active">
+
 							
-							
-								<div id="map"></div>
+									<div id="map"></div>
 								
-								
+
 							</li>
 							<li class="l-section section">
-								<div class="trackers">
-									<h2>Select trackers to show</h2>
-									<div class="trackers--lockup">
-										<!--<h3>"user is $userx"</h3>
-										<h3>"and his ID is $userIDx"</h3>-->
-			
-									</div>
-								</div>
-							</li>
-							<li class="l-section section">
-								<div class="speriod">
-									<h2>Select Search Period</h2>
+								<div class="trackersearch">
+									<h2>Select Search Parameters</h2>
 									<div class="work--lockup">
 										
+			
+			
+			
+			
+			
+			
+			
+			
 			
 									</div>
 								</div>
 							</li>
 							<li class="l-section section">
 								<div class="profile">
-									<h2>Manage Profile</h2>
+									<h2>View Profile</h2>
 									<div class="work--lockup">
 										
-										
-										
-										
-										
+										<form class="form-signin" method="POST" action="assets/php/editdetails.php">
+											<div class="work-request--information">
+												<div class="information-name">
+													<!--<input id="name" type="text" spellcheck="false">-->
+													<label for="name">Gender: <?php echo $user_gender;?>
+													</label>
+												</div>
+												<div class="information-name">
+													<label for="name">Name: <?php echo $user_name;?></label>
+												</div>
+											</div>
+											<div class="work-request--information">
+												<div class="information-name">
+													<label for="name">Surname: <?php echo $user_surname;?></label>
+												</div>
+												<div class="information-email">
+													<label for="name">Father Name: <?php echo $user_fathername;?></label>
+												</div>
+											</div>
+											<div class="work-request--information">
+												<div class="information-name">
+													<input id="email" type="email" spellcheck="false" name = "email">
+													<label for="name">Email: <?php echo $user_email;?></label>
+												</div>
+												<div class="information-email">
+													<input id="idnumber" type="text" spellcheck="false" name = "idnumber">
+													<label for="name">ID Number: <?php echo $user_idnumber;?></label>
+												</div>
+											</div>
+											<div class="work-request--information">
+												<div class="information-name">
+													<input id="telephonea" type="text" spellcheck="false" name = "telephonea">
+													<label for="name">Telephone A: <?php echo $user_telephonea;?></label>
+												</div>
+												<div class="information-email">
+													<input id="telephoneb" type="text" spellcheck="false" name = "telephoneb">
+													<label for="name">Telephone B:<?php echo $user_telephoneb;?></label>
+												</div>
+											</div>										
+											<div class="work-request--information">
+												<div class="information-name">
+													<label for="name">City: <?php echo $user_city;?></label>
+												</div>
+												<div class="information-email">
+													<label for="name">Street: <?php echo $user_streetname;?></label>
+												</div>
+											</div>										
+											<div class="work-request--information">
+												<div class="information-name">
+													<label for="name">Street Number: <?php echo $user_streetnumber;?></label>
+												</div>
+												<div class="information-email">
+													<label for="name">Postal Code: <?php echo $user_postalcode;?></label>
+												</div>
+											</div>										
+											<div class="work-request--information">
+												<div class="information-name">
+													<!--<input id="taxnumberid" type="text" spellcheck="false" name = "taxnumberid">-->
+													<label for="name">Tax Number: <?php echo $user_taxnumber_ID;?></label>
+												</div>
+												<div class="information-name">
+													<input id="button" type="submit" name="submit" value=Save>
+												</div>	
+											</div>	
+																							
+										</form>
 			
 									</div>				
 								</div>	
@@ -125,10 +188,10 @@
 			</div>
 			<ul class="outer-nav">
 				<li class="is-active">Navigation</li>
-				<li>Tracker Selection</li>
-				<li>Search Period</li>
-				<li>Manage Profile</li>
+				<li>Search for Tracker</li>
+				<li>View Profile</li>
 				<li>Contact Us</li>
+				<!--<li>Sign Out</li>-->
 			</ul>
 		</div>
 

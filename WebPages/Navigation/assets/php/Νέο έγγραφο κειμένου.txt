@@ -1,0 +1,10 @@
+$userx ---> username
+$userIDx ---> user ID
+
+
+
+
+$_SESSION['userID'];
+header("Location: ..\Startpage\index.html");
+$row["Privilege"]
+$passkey = trim($_POST['pass']);
