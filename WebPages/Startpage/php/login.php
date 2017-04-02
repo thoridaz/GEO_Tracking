@@ -1,12 +1,14 @@
 <?php  
-	if(!isset($_SESSION)){ session_start(); }	//Start the Session
-	require('connect.php');
-	
-	//It will never let you open index(login) page if session is set
-	if ( isset($_SESSION['user'])!="" ) {
-		header("Location: ..\..\global-master\index.html");
+	if(!isset($_SESSION)){ 
+		session_start();	//Start the Session 
+	} 
+	if ( !empty($_SESSION['user'])) {
+		//It will never let you open index(login) page if session is set		
+		header("Location: ..\..\Navigation\index.php");
 		exit;
 	}
+	require('connect.php');
+
 	//If the form is submitted or not.
 	//If the form is submitted
 	if (isset($_POST['user']) and isset($_POST['pass'])){
@@ -63,14 +65,22 @@
 			$count = mysqli_num_rows($result);
 			//If the posted password is equal to the database password, then session will be created for the user.
 			if ($count == 1 && $row["Password"]==$passkey){
-				$_SESSION['user'] = $Usertag;
+				$_SESSION['user'] = $row["Username"];
 				$_SESSION['userID'] = $row["UserTaxnumber_ID"];	
 				//Checking logged in account privilege before redirecting to corresponding page
 				if ($row["Privilege"] == 1){
-					header("Location: ..\..\Navigation\index.php");
+					$info= $usertag." logged in as User";
+					$query = "INSERT INTO `tbl_logs` (`UserTaxNumber_ID`, `What`) VALUES ('".$row["UserTaxnumber_ID"]."','".$info."')";
+					if (mysqli_query($connection, $query)) {
+						header("Location: ..\..\Navigation\index.php");
+					}
 				}elseif ($row["Privilege"] == 0){
-					//EDW PREPEI NA MPEI H ADMIN PAGE
-					header("Location: ADMIN PAGE");
+					$info= $usertag." logged in as Administrator";
+					$query = "INSERT INTO `tbl_logs` (`UserTaxNumber_ID`, `What`) VALUES ('".$row["UserTaxnumber_ID"]."','".$info."')";
+					if (mysqli_query($connection, $query)) {
+						//EDW PREPEI NA MPEI H ADMIN PAGE
+						//header("Location: DEN EXW IDEA");
+					}
 				}
 			}else{
 				echo "<script type='text/javascript'>alert('Invalid Login Details, Try again...');
