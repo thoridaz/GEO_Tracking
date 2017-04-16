@@ -4,7 +4,7 @@
 	} 
 	require('assets/php/session.php');
 	require('assets/php/accdetails.php');
-
+	//require('assets/php/load_trackers.php');
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +54,7 @@
 				<div id="viewport" class="l-viewport">
 					<div class="l-wrapper">
 						<header class="header">
-							<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+							<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
 							<a class="header--logo" href="#0">
 								<a href="assets/php/logout.php" title="Disconnect">Sign Out</a>
 								<p></p><p></p>
@@ -79,14 +79,21 @@
 									<h2>Select Search Parameters</h2>
 									<div class="work--lockup">
 										
-			
-			
-			
-			
-			
-			
-			
-			
+
+										
+										<select name="dynamic_data">
+										<?php
+										$i=0;
+										while($row = $tracker_list_result->fetch_assoc()) {
+										?>
+										<option value="<?=$row["Nickname"];?>"><?=$row["Nickname"]." - ".$row["TrackerIMEI_ID"];?></option>
+										<?php
+										$i++;
+										}
+										?>
+										</select>
+
+				
 			
 									</div>
 								</div>
@@ -132,7 +139,7 @@
 												</div>
 												<div class="information-email">
 													<input id="telephoneb" type="text" spellcheck="false" name = "telephoneb">
-													<label for="name">Telephone B:<?php echo $user_telephoneb;?></label>
+													<label for="name">Telephone B: <?php echo $user_telephoneb;?></label>
 												</div>
 											</div>										
 											<div class="work-request--information">
@@ -201,47 +208,57 @@
 		
 		<script>
 			var customLabel = {
-				restaurant: {
+				tracker: {
 					label: 'T'
 				},
-				bar: {
-					label: 'U'
+				poi: {
+					label: 'P'
+				},
+				restaurant: {
+					label: 'R'
+				},
+				gasstation: {
+					label: 'G'
+				},
+				interesting: {
+					label: 'I'
 				}
 			};
 
 			function initMap() {
 				var map = new google.maps.Map(document.getElementById('map'), {
-					center: new google.maps.LatLng(-33.863276, 151.207977),
-					zoom: 12
+					center: new google.maps.LatLng(38.2648779, 23.4727507),
+					zoom: 7
 				});
 				var infoWindow = new google.maps.InfoWindow;
 
 				// Change this depending on the name of your PHP or XML file
-				downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function(data) {
+				downloadUrl('http://localhost/webpages/Navigation/assets/php/data_load.php', function(data) {
 					var xml = data.responseXML;
 					var markers = xml.documentElement.getElementsByTagName('marker');
 					Array.prototype.forEach.call(markers, function(markerElem) {
-						var name = markerElem.getAttribute('name');
-						var address = markerElem.getAttribute('address');
-						var type = markerElem.getAttribute('type');
+						var IMEI = markerElem.getAttribute('TrackerIMEI_ID');
+						var Sp = markerElem.getAttribute('Speed');
+						var EvTime = markerElem.getAttribute('EventTime');
 						var point = new google.maps.LatLng(
-						parseFloat(markerElem.getAttribute('lat')),
-						parseFloat(markerElem.getAttribute('lng')));
-
+							parseFloat(markerElem.getAttribute('Longitude')),
+							parseFloat(markerElem.getAttribute('Latitude'))
+						);
+						// FIX THE LABEL FOR THE POINTS
 						var infowincontent = document.createElement('div');
 						var strong = document.createElement('strong');
-						strong.textContent = name
+						strong.textContent = IMEI
 						infowincontent.appendChild(strong);
 						infowincontent.appendChild(document.createElement('br'));
 	
 						var text = document.createElement('text');
-						text.textContent = address
+						text.textContent = EvTime
 						infowincontent.appendChild(text);
-						var icon = customLabel[type] || {};
+						var icon = customLabel["tracker"] || {};
 						var marker = new google.maps.Marker({
 							map: map,
 							position: point,
-						label: icon.label
+							label: icon.label
 						});
 						marker.addListener('click', function() {
 							infoWindow.setContent(infowincontent);
