@@ -26,8 +26,4 @@
 		$user_streetnumber=$row["StreetNumber"];
 		$user_postalcode=$row["PostalCode"];
 	}
-	
-	$query = "SELECT `tbl_assignedtrackers`.`TrackerIMEI_ID`, `tbl_assignedtrackers`.`Nickname` FROM `tbl_assignedtrackers` WHERE `tbl_assignedtrackers`.`UserTaxNumber_ID`= '$userIDx'";
-	$tracker_list_result = mysqli_query($connection, $query) or die(mysqli_error($connection));
-	
 ?>

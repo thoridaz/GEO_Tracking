@@ -4,13 +4,13 @@
 	} 
 	require('assets/php/session.php');
 	require('assets/php/accdetails.php');
-	//require('assets/php/load_trackers.php');
+	require('assets/php/load_trackers.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Global-Using MySQL and PHP with Google Maps</title>
+		<title>GEO Tracking-The way to watch over everything that matters!</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<meta http-equiv="content-type" content="IE=edge">
@@ -18,6 +18,13 @@
 		<meta name="keywords" content="global, template, html, sass, jquery">
 		<meta name="author" content="Gewpap">
 		<link rel="stylesheet" href="assets/css/main.css">
+		<!-- Include Twitter Bootstrap and jQuery: -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css"/>		
+		<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script><!---->
+		<!-- Include the plugin's CSS and JS: -->
+		<script type="text/javascript" src="assets/js/bootstrap-multiselect.js"></script>
+		<link rel="stylesheet" href="assets/css/bootstrap-multiselect.css" type="text/css"/>
 		<style>
 			/* Always set the map height explicitly to define the size of the div
 			* element that contains the map. */
@@ -35,11 +42,6 @@
 
 	<body>
 		
-
-		
-		
-		
-		
 		<!-- notification for small viewports and landscape oriented smartphones -->
 		<!-- <div class="device-notification">
 			<a class="device-notification--logo" href="#0">
@@ -55,6 +57,7 @@
 					<div class="l-wrapper">
 						<header class="header">
 							<p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+							
 							<a class="header--logo" href="#0">
 								<a href="assets/php/logout.php" title="Disconnect">Sign Out</a>
 								<p></p><p></p>
@@ -69,32 +72,63 @@
 						<ul class="l-main-content main-content">
 							<li class="l-section section section--is-active">
 
-							
 									<div id="map"></div>
-								
 
 							</li>
 							<li class="l-section section">
 								<div class="trackersearch">
+									<br><br>
 									<h2>Select Search Parameters</h2>
-									<div class="work--lockup">
+									<div class="work--lockup">	
+										<br><br><br><br>
 										
+										
+										<form method="POST" action="assets/php/data_load2.php">
+											<div class="information-name">
+												<label for="name">AVAILABLE TRACKERS:</label>
+											</div>										
+											<!-- Initialize the multiselect plugin: -->	
+											<select id="multiple_tracker_select" name="dynamic_data[]" multiple="multiple">
+												<?php
+												$i=0;
+												while($row = $tracker_list_result->fetch_assoc()) {
+												?>
+												<option value="<?=$row["TrackerIMEI_ID"];?>"><?=$row["Nickname"]." - ".$row["TrackerIMEI_ID"];?></option>
+												<?php
+												$i++;
+												}
+												?>
+											</select>											
+											<br><br>
+											<div class="information-name">
+												<label for="name">FROM:</label>
+											</div>
+											<input type="datetime-local" name="start_date">
+											<div class="information-name">
+												<label for="name">UNTIL:</label>
+											</div>
+											<input type="datetime-local" name="end_date">
+												
+											<br><br>
+											<input type="submit" id="btnSelected"  name="btnSelected" value="GO to map" />
+										</form>
+										
+										
+										<script type="text/javascript">
+											$('#btnSelected').click(function () {
+												var selected = $("#multiple_tracker_select option:selected");
+												var message = "";
+												selected.each(
+													function () {
+														message += $(this).text() + " " + $(this).val() + "\n";
+													}
+												);
+												//message += $(start_date).val() + "\n" + $(end_date).val() + "\n";
+												alert(message);
+											});
+										</script>
 
 										
-										<select name="dynamic_data">
-										<?php
-										$i=0;
-										while($row = $tracker_list_result->fetch_assoc()) {
-										?>
-										<option value="<?=$row["Nickname"];?>"><?=$row["Nickname"]." - ".$row["TrackerIMEI_ID"];?></option>
-										<?php
-										$i++;
-										}
-										?>
-										</select>
-
-				
-			
 									</div>
 								</div>
 							</li>
@@ -167,9 +201,7 @@
 													<input id="button" type="submit" name="submit" value=Save>
 												</div>	
 											</div>	
-																							
 										</form>
-			
 									</div>				
 								</div>	
 							</li>
@@ -202,7 +234,7 @@
 			</ul>
 		</div>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
 		<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
 		<script src="assets/js/functions-min.js"></script>
 		
@@ -233,39 +265,41 @@
 				var infoWindow = new google.maps.InfoWindow;
 
 				// Change this depending on the name of your PHP or XML file
-				downloadUrl('http://localhost/webpages/Navigation/assets/php/data_load.php', function(data) {
-					var xml = data.responseXML;
-					var markers = xml.documentElement.getElementsByTagName('marker');
-					Array.prototype.forEach.call(markers, function(markerElem) {
-						var IMEI = markerElem.getAttribute('TrackerIMEI_ID');
-						var Sp = markerElem.getAttribute('Speed');
-						var EvTime = markerElem.getAttribute('EventTime');
-						var point = new google.maps.LatLng(
-							parseFloat(markerElem.getAttribute('Longitude')),
-							parseFloat(markerElem.getAttribute('Latitude'))
-						);
+				//downloadUrl('http://localhost/webpages/Navigation/assets/php/data_load.php', 
+				//function(data) {
+				//	var xml = data.responseXML;
+				//	var markers = xml.documentElement.getElementsByTagName('marker');
+				//	Array.prototype.forEach.call(markers, function(markerElem) {
+				//		var IMEI = markerElem.getAttribute('TrackerIMEI_ID');
+				//		var Sp = markerElem.getAttribute('Speed');
+				//		var EvTime = markerElem.getAttribute('EventTime');
+				//		var point = new google.maps.LatLng(
+				//			parseFloat(markerElem.getAttribute('Longitude')),
+				//			parseFloat(markerElem.getAttribute('Latitude'))
+				//		);
 						// FIX THE LABEL FOR THE POINTS
-						var infowincontent = document.createElement('div');
-						var strong = document.createElement('strong');
-						strong.textContent = IMEI
-						infowincontent.appendChild(strong);
-						infowincontent.appendChild(document.createElement('br'));
+				//		var infowincontent = document.createElement('div');
+				//		var strong = document.createElement('strong');
+				//		strong.textContent = IMEI
+				//		infowincontent.appendChild(strong);
+				//		infowincontent.appendChild(document.createElement('br'));
 	
-						var text = document.createElement('text');
-						text.textContent = EvTime
-						infowincontent.appendChild(text);
-						var icon = customLabel["tracker"] || {};
-						var marker = new google.maps.Marker({
-							map: map,
-							position: point,
-							label: icon.label
-						});
-						marker.addListener('click', function() {
-							infoWindow.setContent(infowincontent);
-							infoWindow.open(map, marker);
-						});
-					});
-				});
+				//		var text = document.createElement('text');
+				//		text.textContent = EvTime
+				//		infowincontent.appendChild(text);
+				//		var icon = customLabel["tracker"] || {};
+				//		var marker = new google.maps.Marker({
+				//			map: map,
+				//			position: point,
+				//			label: icon.label
+				//		});
+				//		marker.addListener('click', function() {
+				//			infoWindow.setContent(infowincontent);
+				//			infoWindow.open(map, marker);
+				//		});
+				//	});
+				//}
+				//);
 			}
 
 			function downloadUrl(url, callback) {
@@ -288,6 +322,14 @@
 		<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHDcpQOKwPI_-DSmat_pI03h4186-0-2A&callback=initMap">
 		</script>
-		
+		<script id="multiselect_script" type="text/javascript">
+			$(document).ready(function() {
+				$('#multiple_tracker_select').multiselect({
+					includeSelectAllOption: true,
+					enableFiltering: true,
+					filterPlaceholder: 'Search for tracker...'
+				});
+			});
+		</script>
 	</body>
 </html>
