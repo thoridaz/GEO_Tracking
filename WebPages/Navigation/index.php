@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>GEO Tracking-The way to watch over everything that matters!</title>
+		<title>GEO Tracking - The way to watch over everything that matters!</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<meta http-equiv="content-type" content="IE=edge">
@@ -21,9 +21,11 @@
 		<!-- Include Twitter Bootstrap and jQuery: -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css"/>		
 		<script type="text/javascript" src="assets/js/jquery.min.js"></script>
-		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script><!---->
+		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 		<!-- Include the plugin's CSS and JS: -->
 		<script type="text/javascript" src="assets/js/bootstrap-multiselect.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
+        <script src="assets/js/functions-min.js"></script>
 		<link rel="stylesheet" href="assets/css/bootstrap-multiselect.css" type="text/css"/>
 		<style>
 			/* Always set the map height explicitly to define the size of the div
@@ -38,17 +40,19 @@
 				padding: 0;
 			}
 		</style>
+
+
 	</head>
 
 	<body>
-		
+
 		<!-- notification for small viewports and landscape oriented smartphones -->
 		<!-- <div class="device-notification">
 			<a class="device-notification--logo" href="#0">
 				<img src="assets/img/logo.png" alt="Global">
 				<p>Global</p>
 			</a>
-			<p class="device-notification--message">Global has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.</p>
+			<p class="device-notification--message">GEO_Tracking has so much to offer that we must request you orient your device to portrait or find a larger screen. You won't be disappointed.</p>
 		</div>-->
 
 		<div class="perspective effect-rotate-left">
@@ -79,10 +83,10 @@
 								<div class="trackersearch">
 									<br><br>
 									<h2>Select Search Parameters</h2>
-									<div class="work--lockup">	
+									<div class="nav--lockup">	
 										<br><br><br><br>
-										
-										
+
+                                        <!--action="assets/php/data_load2.php"-->
 										<form method="POST" action="assets/php/data_load2.php">
 											<div class="information-name">
 												<label for="name">AVAILABLE TRACKERS:</label>
@@ -93,49 +97,40 @@
 												$i=0;
 												while($row = $tracker_list_result->fetch_assoc()) {
 												?>
-												<option value="<?=$row["TrackerIMEI_ID"];?>"><?=$row["Nickname"]." - ".$row["TrackerIMEI_ID"];?></option>
+
+												<option key="<?=$row["TrackerIMEI_ID"];?>" value="<?=$row["TrackerIMEI_ID"];?>"><?=$row["Nickname"]." - ".$row["TrackerIMEI_ID"];?></option>
 												<?php
 												$i++;
 												}
 												?>
 											</select>											
 											<br><br>
-											<div class="information-name">
-												<label for="name">FROM:</label>
-											</div>
-											<input type="datetime-local" name="start_date">
-											<div class="information-name">
-												<label for="name">UNTIL:</label>
-											</div>
-											<input type="datetime-local" name="end_date">
+                                            <div class="information-name">
+                                                <label for="name">FROM:</label>
+                                            </div>
+                                            <input type="datetime-local" name="start_date">
+                                            <div class="information-name">
+                                                <label for="name">UNTIL:</label>
+                                            </div>
+                                            <input type="datetime-local" name="end_date">
 												
 											<br><br>
-											<input type="submit" id="btnSelected"  name="btnSelected" value="GO to map" />
+											<input type="submit" id="btnSelected"  name="btnSelected" value="GO to map"/>
 										</form>
-										
-										
-										<script type="text/javascript">
-											$('#btnSelected').click(function () {
-												var selected = $("#multiple_tracker_select option:selected");
-												var message = "";
-												selected.each(
-													function () {
-														message += $(this).text() + " " + $(this).val() + "\n";
-													}
-												);
-												//message += $(start_date).val() + "\n" + $(end_date).val() + "\n";
-												alert(message);
-											});
-										</script>
 
-										
+                                        <!--<script>
+											$('#btnSelected').on('click', function () {    
+												//http://localhost/webpages/GEO_Tracking/Navigation/assets/php/data_load2.php	
+                                            });
+                                        </script>-->
 									</div>
 								</div>
 							</li>
-							<li class="l-section section">
+							<li class="l-section section" style="max-height: 100%;
+    overflow-y: scroll;">
 								<div class="profile">
 									<h2>View Profile</h2>
-									<div class="work--lockup">
+									<div class="prof--lockup">
 										
 										<form class="form-signin" method="POST" action="assets/php/editdetails.php">
 											<div class="work-request--information">
@@ -230,77 +225,172 @@
 				<li>Search for Tracker</li>
 				<li>View Profile</li>
 				<li>Contact Us</li>
-				<!--<li>Sign Out</li>-->
 			</ul>
 		</div>
-
-		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>-->
-		<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
-		<script src="assets/js/functions-min.js"></script>
 		
 		<script>
-			var customLabel = {
-				tracker: {
-					label: 'T'
-				},
-				poi: {
-					label: 'P'
-				},
-				restaurant: {
-					label: 'R'
-				},
-				gasstation: {
-					label: 'G'
-				},
-				interesting: {
-					label: 'I'
-				}
-			};
+            var customLabel = {
+                tracker: {
+                    label: 'T'
+                },
+                poi: {
+                    label: 'P'
+                },
+                restaurant: {
+                    label: 'R'
+                },
+                gasstation: {
+                    label: 'G'
+                },
+                interesting: {
+                    label: 'I'
+                }
+            };
 
-			function initMap() {
-				var map = new google.maps.Map(document.getElementById('map'), {
-					center: new google.maps.LatLng(38.2648779, 23.4727507),
-					zoom: 7
-				});
-				var infoWindow = new google.maps.InfoWindow;
+            var map;
+            function initMap() {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                    center: new google.maps.LatLng(38.2648779, 23.4727507),
+                    zoom: 7,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    zoomControl: true,
+                    scaleControl: true,
+                    MapTypeControl: true,
+                    mapTypeControlOptions: {
+                        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                        mapTypeIds: ['roadmap', 'terrain']
+                    },
+                    StreetViewControl: false,
+                    RotateControl: true,
+                    FullscreenControl: true,
+                    styles: [
+                        {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+                        {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+                        {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+                        {
+                            featureType: 'administrative.locality',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#d59563'}]
+                        },
+                        {
+                            featureType: 'poi',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#d59563'}]
+                        },
+                        {
+                            featureType: 'poi.park',
+                            elementType: 'geometry',
+                            stylers: [{color: '#263c3f'}]
+                        },
+                        {
+                            featureType: 'poi.park',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#6b9a76'}]
+                        },
+                        {
+                            featureType: 'road',
+                            elementType: 'geometry',
+                            stylers: [{color: '#38414e'}]
+                        },
+                        {
+                            featureType: 'road',
+                            elementType: 'geometry.stroke',
+                            stylers: [{color: '#212a37'}]
+                        },
+                        {
+                            featureType: 'road',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#9ca5b3'}]
+                        },
+                        {
+                            featureType: 'road.highway',
+                            elementType: 'geometry',
+                            stylers: [{color: '#746855'}]
+                        },
+                        {
+                            featureType: 'road.highway',
+                            elementType: 'geometry.stroke',
+                            stylers: [{color: '#1f2835'}]
+                        },
+                        {
+                            featureType: 'road.highway',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#f3d19c'}]
+                        },
+                        {
+                            featureType: 'transit',
+                            elementType: 'geometry',
+                            stylers: [{color: '#2f3948'}]
+                        },
+                        {
+                            featureType: 'transit.station',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#d59563'}]
+                        },
+                        {
+                            featureType: 'water',
+                            elementType: 'geometry',
+                            stylers: [{color: '#17263c'}]
+                        },
+                        {
+                            featureType: 'water',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#515c6d'}]
+                        },
+                        {
+                            featureType: 'water',
+                            elementType: 'labels.text.stroke',
+                            stylers: [{color: '#17263c'}]
+                        }
+                    ]
+                });
 
-				// Change this depending on the name of your PHP or XML file
-				//downloadUrl('http://localhost/webpages/Navigation/assets/php/data_load.php', 
-				//function(data) {
-				//	var xml = data.responseXML;
-				//	var markers = xml.documentElement.getElementsByTagName('marker');
-				//	Array.prototype.forEach.call(markers, function(markerElem) {
-				//		var IMEI = markerElem.getAttribute('TrackerIMEI_ID');
-				//		var Sp = markerElem.getAttribute('Speed');
-				//		var EvTime = markerElem.getAttribute('EventTime');
-				//		var point = new google.maps.LatLng(
-				//			parseFloat(markerElem.getAttribute('Longitude')),
-				//			parseFloat(markerElem.getAttribute('Latitude'))
-				//		);
-						// FIX THE LABEL FOR THE POINTS
-				//		var infowincontent = document.createElement('div');
-				//		var strong = document.createElement('strong');
-				//		strong.textContent = IMEI
-				//		infowincontent.appendChild(strong);
-				//		infowincontent.appendChild(document.createElement('br'));
-	
-				//		var text = document.createElement('text');
-				//		text.textContent = EvTime
-				//		infowincontent.appendChild(text);
-				//		var icon = customLabel["tracker"] || {};
-				//		var marker = new google.maps.Marker({
-				//			map: map,
-				//			position: point,
-				//			label: icon.label
-				//		});
-				//		marker.addListener('click', function() {
-				//			infoWindow.setContent(infowincontent);
-				//			infoWindow.open(map, marker);
-				//		});
-				//	});
-				//}
-				//);
-			}
+                var trafficLayer = new google.maps.TrafficLayer();
+                trafficLayer.setMap(map);
+
+                var transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
+
+
+				downloadUrl('assets/tmp/tmp_qry_'+"<?php echo $user_taxnumber_ID;?>"+'.xml',
+					function(data) {
+						var xml = data.responseXML;
+						var markers = xml.documentElement.getElementsByTagName('marker');
+						Array.prototype.forEach.call(markers, function(markerElem) {
+							var IMEI = markerElem.getAttribute('TrackerIMEI_ID');
+							var Sp = markerElem.getAttribute('Speed');
+							var EvTime = markerElem.getAttribute('EventTime');
+							var point = new google.maps.LatLng(
+								parseFloat(markerElem.getAttribute('Longitude')),
+								parseFloat(markerElem.getAttribute('Latitude'))
+							);
+							//FIX THE LABEL FOR THE POINTS
+							var infowincontent = document.createElement('div');
+							var strong = document.createElement('strong');
+							strong.textContent = IMEI
+							infowincontent.appendChild(strong);
+							infowincontent.appendChild(document.createElement('br'));
+
+							var text = document.createElement('text');
+							text.textContent = EvTime
+							infowincontent.appendChild(text);
+							var icon = customLabel["tracker"] || {};
+							var marker = new google.maps.Marker({
+								map: map,
+								position: point,
+								label: icon.label
+							});
+							marker.addListener('click', function() {
+								infoWindow.setContent(infowincontent);
+								infoWindow.open(map, marker);
+							});
+						});
+					}
+				);
+            }
+			
+
+			var infoWindow = new google.maps.InfoWindow;								
 
 			function downloadUrl(url, callback) {
 				var request = window.ActiveXObject ?

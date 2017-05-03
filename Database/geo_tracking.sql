@@ -33,7 +33,7 @@ CREATE TABLE `tbl_assignedtrackers` (
 
 /*Data for the table `tbl_assignedtrackers` */
 
-insert  into `tbl_assignedtrackers`(`TrackerIMEI_ID`,`UserTaxNumber_ID`,`Nickname`,`LinkDate`) values (358456985123694,146995081,'DemoTracker','2017-03-06 04:17:06.564212');
+insert  into `tbl_assignedtrackers`(`TrackerIMEI_ID`,`UserTaxNumber_ID`,`Nickname`,`LinkDate`) values (352887073813341,155685972,'DemoTracker2','2017-04-17 00:21:23.425859'),(358456985123694,155685972,'DemoTracker1','2017-04-17 00:21:20.169853'),(358654654876852,155685972,'DemoTracker3','2017-04-17 00:21:26.304864'),(385469845615875,155685972,'DemoTracker4','2017-04-17 00:21:28.446868'),(387516546513511,155685972,'DemoTracker5','2017-04-17 00:21:30.169871'),(387516546513513,155685972,'DemoTracker6','2017-04-17 00:21:54.924914'),(387516546513515,155685972,'DemoTracker7','2017-04-17 00:21:57.977920'),(387516546513518,155685972,'DemoTracker8','2017-04-17 00:22:00.879925');
 
 /*Table structure for table `tbl_cities` */
 
@@ -45,11 +45,11 @@ CREATE TABLE `tbl_cities` (
   PRIMARY KEY (`City_ID`),
   UNIQUE KEY `City_ID_UNIQUE` (`City_ID`),
   UNIQUE KEY `City_UNIQUE` (`City`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tbl_cities` */
 
-insert  into `tbl_cities`(`City_ID`,`City`) values (1,'Athens'),(7,'Avlona'),(6,'Kalamata'),(4,'Korinthos'),(3,'Patra'),(5,'Porto Heli'),(2,'Thesalloniki');
+insert  into `tbl_cities`(`City_ID`,`City`) values (8,''),(1,'Athens'),(7,'Avlona'),(6,'Kalamata'),(4,'Korinthos'),(3,'Patra'),(5,'Porto Heli'),(2,'Thesalloniki');
 
 /*Table structure for table `tbl_gender` */
 
@@ -83,11 +83,11 @@ CREATE TABLE `tbl_locations` (
   UNIQUE KEY `Location_ID_UNIQUE` (`Location_ID`),
   KEY `fk_TBL_Locations_TBL_Trackers1_idx` (`TrackerIMEI_ID`),
   CONSTRAINT `fk_TBL_Locations_TBL_Trackers2` FOREIGN KEY (`TrackerIMEI_ID`) REFERENCES `tbl_trackers` (`TrackerIMEI_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tbl_locations` */
 
-insert  into `tbl_locations`(`Location_ID`,`TrackerIMEI_ID`,`Longitude`,`Latitude`,`Speed`,`Altitude`,`Battery`,`EventTime`) values (8,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(9,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(10,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(11,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(12,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(13,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(14,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(15,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(16,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(17,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(18,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(19,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(20,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(21,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(22,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(23,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(24,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(25,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2019-03-06 03:24:50');
+insert  into `tbl_locations`(`Location_ID`,`TrackerIMEI_ID`,`Longitude`,`Latitude`,`Speed`,`Altitude`,`Battery`,`EventTime`) values (8,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(9,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(10,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(11,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(12,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(13,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(14,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(15,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(16,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(17,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(18,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 02:58:57'),(19,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(20,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(21,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(22,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(23,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(24,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2017-03-06 03:09:50'),(25,358456985123694,37.9444001,23.7074772,'-1',-1,'0','2019-03-06 03:24:50'),(26,358456985123694,37.98847,23.75152,'-1',-1,'0','2017-03-06 02:58:57'),(27,358456985123694,37.93904,23.704395,'-1',-1,'0','2017-03-06 02:58:57'),(28,358456985123694,37.93915,23.70416,'-1',-1,'0','2017-03-06 02:58:57'),(29,358456985123694,37.9388,23.70437,'-1',-1,'0','2017-03-06 02:58:57');
 
 /*Table structure for table `tbl_logs` */
 
@@ -102,9 +102,11 @@ CREATE TABLE `tbl_logs` (
   UNIQUE KEY `Log_ID_UNIQUE` (`Log_ID`),
   KEY `fk_TBL_Logs_TBL_Users1_idx` (`UserTaxNumber_ID`),
   CONSTRAINT `fk_TBL_Logs_TBL_Users1` FOREIGN KEY (`UserTaxNumber_ID`) REFERENCES `tbl_users` (`UserTaxNumber_ID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `tbl_logs` */
+
+insert  into `tbl_logs`(`Log_ID`,`UserTaxNumber_ID`,`When`,`What`) values (10,155685972,'2017-04-02 21:41:20.944858','testtesttest logged in as User'),(11,155685972,'2017-04-02 21:43:48.000269','testtesttest logged in as User'),(12,146995081,'2017-04-02 21:51:38.824199','gpapakonstantinou logged in as Administrator'),(13,155685972,'2017-04-03 00:19:11.422568','testtesttest logged in as User'),(14,155685972,'2017-04-03 00:52:58.955952','testtesttest logged in as User'),(15,155685972,'2017-04-03 01:41:04.576147','testtesttest edited his details with: apapap@apapap.gr,dc695753,6987654321,6901234567'),(16,155685972,'2017-04-03 11:59:19.127060','testtesttest logged in as User'),(17,155685972,'2017-04-04 17:45:50.406881','testtesttest logged in as User'),(18,155685972,'2017-04-04 17:47:33.592366','testtesttest edited his details with: papatrexas@gmail.com,ak9999,6999999999,6933333333'),(19,155685972,'2017-04-14 18:34:32.893839','testtesttest logged in as User'),(20,155685972,'2017-04-15 14:15:28.606838','testtesttest logged in as User'),(21,155685972,'2017-04-15 20:22:28.928993','testtesttest logged in as User'),(22,155685972,'2017-04-15 20:32:06.824085','testtesttest logged in as User'),(23,155685972,'2017-04-16 18:13:07.334740','testtesttest logged in as User'),(24,155685972,'2017-04-16 18:54:31.212663','testtesttest logged in as User'),(25,155685972,'2017-04-16 18:56:48.344318','testtesttest logged in as User'),(26,155685972,'2017-04-16 18:58:06.302485','testtesttest logged in as User'),(27,155685972,'2017-04-16 19:12:06.852331','testtesttest logged in as User'),(28,155685972,'2017-04-16 20:00:11.077670','testtesttest logged in as User'),(29,155685972,'2017-04-16 21:58:40.638523','testtesttest logged in as User'),(30,155685972,'2017-04-16 22:04:32.676434','testtesttest logged in as User'),(31,155685972,'2017-04-16 22:05:03.834121','testtesttest logged in as User'),(32,155685972,'2017-04-16 22:25:46.962364','testtesttest logged in as User'),(33,155685972,'2017-04-16 22:28:29.105262','testtesttest logged in as User'),(34,155685972,'2017-04-16 22:37:18.637121','testtesttest logged in as User'),(35,155685972,'2017-04-16 22:46:11.183570','testtesttest logged in as User'),(36,155685972,'2017-04-16 22:47:57.928910','testtesttest logged in as User'),(37,155685972,'2017-04-16 23:15:35.706332','testtesttest logged in as User'),(38,155685972,'2017-04-16 23:28:40.200108','testtesttest logged in as User'),(39,155685972,'2017-04-16 23:32:01.897448','testtesttest logged in as User'),(40,155685972,'2017-04-16 23:40:08.407954','testtesttest logged in as User'),(41,155685972,'2017-04-16 23:45:31.539536','testtesttest logged in as User'),(42,155685972,'2017-04-17 00:32:30.176414','testtesttest logged in as User'),(43,155685972,'2017-04-17 22:33:56.619581','testtesttest logged in as User'),(44,155685972,'2017-04-17 22:38:25.796936','testtesttest logged in as User'),(45,155685972,'2017-04-17 22:41:56.241945','testtesttest logged in as User'),(46,155685972,'2017-04-20 11:23:55.733825','testtesttest logged in as User'),(47,155685972,'2017-04-28 00:41:19.789430','testtesttest logged in as User'),(48,155685972,'2017-04-28 18:56:23.190885','testtesttest logged in as User');
 
 /*Table structure for table `tbl_msisdn` */
 
@@ -123,7 +125,7 @@ CREATE TABLE `tbl_msisdn` (
 
 /*Data for the table `tbl_msisdn` */
 
-insert  into `tbl_msisdn`(`MSISDN_ID`,`PIN1`,`PIN2`,`PUK1`,`PUK2`,`AdditionDate`) values (6934575852,4444,4444,4444,4444,'2017-03-09 14:46:03'),(6942033581,5555,5555,5555,5555,'2017-03-06 02:49:08'),(6980118854,9999,9999,9999,9999,'2017-03-24 23:37:25'),(6999999999,9999,9999,9999,9999,'2017-03-14 19:26:52');
+insert  into `tbl_msisdn`(`MSISDN_ID`,`PIN1`,`PIN2`,`PUK1`,`PUK2`,`AdditionDate`) values (6933333333,3333,4444,5555,6666,'2017-04-17 00:10:11'),(6934575852,4444,4444,4444,4444,'2017-03-09 14:46:03'),(6942033581,5555,5555,5555,5555,'2017-03-06 02:49:08'),(6944444444,4444,5555,6666,7777,'2017-04-17 00:10:32'),(6980118854,9999,9999,9999,9999,'2017-03-24 23:37:25'),(6988888888,5555,6666,7777,8888,'2017-04-17 00:11:00'),(6999427216,1111,2222,3333,4444,'2017-04-17 00:09:47'),(6999999999,9999,9999,9999,9999,'2017-03-14 19:26:52');
 
 /*Table structure for table `tbl_poi_locations` */
 
@@ -188,7 +190,7 @@ CREATE TABLE `tbl_trackers` (
   `Status` int(11) NOT NULL DEFAULT '0',
   `LastUpdate` datetime NOT NULL DEFAULT '1900-01-01 00:00:01',
   `Condition` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`TrackerIMEI_ID`,`MSISDN_ID`,`TrackerModel_ID`),
+  PRIMARY KEY (`TrackerIMEI_ID`,`TrackerModel_ID`),
   UNIQUE KEY `TrackerIMEI_ID_UNIQUE` (`TrackerIMEI_ID`),
   UNIQUE KEY `MSISDN_ID_UNIQUE` (`MSISDN_ID`),
   KEY `fk_TBL_Trackers_TBL_TrackerModels1_idx` (`TrackerModel_ID`),
@@ -198,7 +200,7 @@ CREATE TABLE `tbl_trackers` (
 
 /*Data for the table `tbl_trackers` */
 
-insert  into `tbl_trackers`(`TrackerIMEI_ID`,`MSISDN_ID`,`TrackerModel_ID`,`SerialNumber`,`AddDate`,`Status`,`LastUpdate`,`Condition`) values (352887073813341,6980118854,1,'087073813341','2017-03-24 23:42:05.050122',0,'1900-01-01 00:00:01',1),(358456985123694,6942033581,1,'555555','2017-03-06 03:36:41.000000',0,'2017-03-08 01:50:00',1),(385469845615875,6934575852,3,'444444','2017-03-08 00:00:01.000000',0,'1900-01-01 00:00:01',1);
+insert  into `tbl_trackers`(`TrackerIMEI_ID`,`MSISDN_ID`,`TrackerModel_ID`,`SerialNumber`,`AddDate`,`Status`,`LastUpdate`,`Condition`) values (352887073813341,6980118854,1,'087073813341','2017-03-24 23:42:05.050122',0,'1900-01-01 00:00:01',1),(358456985123694,6942033581,1,'555555','2017-04-15 20:45:22.133391',1,'2017-03-06 02:58:57',1),(358654654876852,6999999999,1,'666666','2017-04-17 00:11:58.421864',0,'1900-01-01 00:00:01',1),(385469845615875,6934575852,3,'444444','2017-03-08 00:00:01.000000',0,'1900-01-01 00:00:01',1),(387516546513511,6999427216,1,'333333','2017-04-17 00:16:36.278351',0,'1900-01-01 00:00:01',1),(387516546513513,6944444444,1,'888888','2017-04-17 00:15:01.994185',0,'1900-01-01 00:00:01',1),(387516546513515,6933333333,1,'777777','2017-04-17 00:14:17.950109',0,'1900-01-01 00:00:01',1),(387516546513518,6988888888,1,'999999','2017-04-17 00:15:29.600234',0,'1900-01-01 00:00:01',1);
 
 /*Table structure for table `tbl_useraddress` */
 
@@ -220,7 +222,7 @@ CREATE TABLE `tbl_useraddress` (
 
 /*Data for the table `tbl_useraddress` */
 
-insert  into `tbl_useraddress`(`UserTaxNumber_ID`,`City_ID`,`Street_ID`,`StreetNumber`,`PostalCode`) values (146995081,1,2,'10','17564');
+insert  into `tbl_useraddress`(`UserTaxNumber_ID`,`City_ID`,`Street_ID`,`StreetNumber`,`PostalCode`) values (146995081,1,2,'10','17564'),(155685972,6,3,'15','15975');
 
 /*Table structure for table `tbl_userdetails` */
 
@@ -245,7 +247,7 @@ CREATE TABLE `tbl_userdetails` (
 
 /*Data for the table `tbl_userdetails` */
 
-insert  into `tbl_userdetails`(`UserTaxNumber_ID`,`Gender_ID`,`Name`,`Surname`,`FatherName`,`Email`,`IDnumber`,`TelephoneA`,`TelephoneB`) values (146995081,1,'George','Papakonstantinou','Fragkiskos','gew.papakonstantinou@gmail.com','276308025',6942033581,NULL),(155685972,2,'testina','testinaaa','testos','testina@testole.com','ab259545',6933335554,NULL);
+insert  into `tbl_userdetails`(`UserTaxNumber_ID`,`Gender_ID`,`Name`,`Surname`,`FatherName`,`Email`,`IDnumber`,`TelephoneA`,`TelephoneB`) values (146995081,1,'George','Papakonstantinou','Fragkiskos','gew.papakonstantinou@gmail.com','276308025',6942033581,NULL),(155685972,2,'testina','testinaaa','testos','papatrexas@gmail.com','ak9999',6999999999,6933333333);
 
 /*Table structure for table `tbl_users` */
 
