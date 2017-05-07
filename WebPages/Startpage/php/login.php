@@ -46,12 +46,9 @@
 			$error = true;
 			$passError = "Please enter your password.";
 		}
-		
 		//If there's no error, continue to login
 		if ( !($error) ) {
-			
 			//$passkey = hash('sha256', $passkey); // password hashing using SHA256
-			
 			//1-user/0-admin
 			if ($priv == 1){
 				$query = "SELECT `UserTaxnumber_ID`, `Username`, `Password`, `Privilege`, `Status` FROM `tbl_users` WHERE (`Username`='$usertag') AND (`Privilege`='$priv') AND (`Status`=1)";
